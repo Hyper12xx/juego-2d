@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfl1e5ap72878"]
+[gd_scene load_steps=14 format=3 uid="uid://cfl1e5ap72878"]
 
 [ext_resource type="Texture2D" uid="uid://danw1w57ci2kh" path="res://Assets/idle.png" id="1_l8h54"]
 
@@ -73,11 +73,24 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8h54"]
+size = Vector2(19.5, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ntmi"]
+radius = 11.0
+
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(232, 291)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-240, -309)
 sprite_frames = SubResource("SpriteFrames_apopc")
 animation = &"Idle"
-frame_progress = 0.429847
+autoplay = "Idle"
+frame_progress = 0.312249
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, 10)
+shape = SubResource("RectangleShape2D_l8h54")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_4ntmi")
