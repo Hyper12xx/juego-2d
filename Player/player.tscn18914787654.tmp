@@ -221,10 +221,3 @@ script = ExtResource("9_apopc")
 
 [node name="InAir" type="Node" parent="StateMachine"]
 script = ExtResource("10_5htga")
-
-[node name="Label" type="Label" parent="."]
-offset_left = -21.0
-offset_top = -45.0
-offset_right = 19.0
-offset_bottom = -22.0
-text = "state"
