@@ -2,7 +2,7 @@ extends PlayerState
 
 
 func enter(previous_state_path : String, data := {}):
-	pass
+	player.animated_sprite_2d.play("Idle")
 
 func physics_update(_delta:float):
 	if !player.is_on_floor():
