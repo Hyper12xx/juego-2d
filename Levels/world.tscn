@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://q1xf4bntlj8a"]
+[gd_scene load_steps=13 format=4 uid="uid://q1xf4bntlj8a"]
 
 [ext_resource type="PackedScene" uid="uid://cfl1e5ap72878" path="res://Player/player.tscn" id="1_pbelu"]
 [ext_resource type="Texture2D" uid="uid://btk6xl5v28e36" path="res://Assets/New Piskel (1).png" id="2_4dvsh"]
 [ext_resource type="Texture2D" uid="uid://bby046s8255co" path="res://Assets/New Piskel (2).png" id="3_ks8n1"]
+[ext_resource type="Texture2D" uid="uid://cwu350p12k1y8" path="res://Assets/pixil-frame-0 (5).png" id="3_x5oxt"]
 [ext_resource type="Texture2D" uid="uid://bmaocmohi47mq" path="res://Assets/pixil-frame-0 (4).png" id="4_x5oxt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vqnaq"]
@@ -52,6 +53,13 @@ texture = SubResource("CompressedTexture2D_k53q1")
 3:2/0 = 0
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 3, 5, 3, 5, -8)
 0:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ay5oo"]
+texture = ExtResource("3_x5oxt")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_06jdw"]
 texture = ExtResource("3_ks8n1")
@@ -161,7 +169,8 @@ texture = ExtResource("4_x5oxt")
 3:0/0/terrains_peering_bit/top_side = 0
 
 [sub_resource type="TileSet" id="TileSet_ay5oo"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 0
+physics_layer_0/collision_mask = 0
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0, 0.348975, 0.808305, 1)
@@ -169,6 +178,7 @@ sources/0 = SubResource("TileSetAtlasSource_vqnaq")
 sources/3 = SubResource("TileSetAtlasSource_06jdw")
 sources/1 = SubResource("TileSetAtlasSource_rljl1")
 sources/6 = SubResource("TileSetAtlasSource_7ey7r")
+sources/2 = SubResource("TileSetAtlasSource_ay5oo")
 
 [node name="World" type="Node2D"]
 
