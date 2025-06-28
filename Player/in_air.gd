@@ -4,23 +4,31 @@ extends PlayerState
 
 var isJumping := false
 var canReadJumpCoyote := false
-var jumpCount := 1
+var jumpCount := 0
 
 func enter(previous_state_path : String, data := {}):
 	isJumping = false
 	canReadJumpCoyote = false
+	player.animated_sprite_2d.play("Jump")
 	
-	if data.has("Jump"):
+	if data.has("Jump") and jumpCount < 2:
+		jumpCount+=1
+		jumpCount - clamp(jumpCount,0,2)
+		
+		
 		isJumping = true
 		player.velocity.y = 0
 		player.velocity.y = -player.jump
-		player.animated_sprite_2d.play("Jump")
+		
+		if jumpCount > 1:
+			player.animated_sprite_2d.play("Jump")
 	else:
 		coyote_timer.start()
 		canReadJumpCoyote = true
 
 func physics_update(_delta:float):
 	if player.is_on_floor():
+		jumpCount = 0
 		emit_signal("finished","Idle")
 	else:
 		player.velocity.y += Player.GRAVITY
@@ -41,6 +49,8 @@ func handle_input(_event : InputEvent):
 			emit_signal("finished", "InAir", {"Jump": true})
 		elif canReadJumpCoyote and player.velocity.y > 0:
 			emit_signal("finished", "InAir", {"Jump": true})
+		elif jumpCount <= 1:
+			emit_signal("finished", "InAir", {"Jump": true})
 		else:
 			$JumppBufferTImer.start()
 
@@ -53,5 +63,5 @@ func _on_coyote_timer_timeout() -> void:
 
 
 func _on_jumpp_buffer_t_imer_timeout() -> void:
-	if $"..".state.name == "Idle" or $"..".state.name:
+	if $"..".state.name == "Idle" or $"..".state.name == "Walking":
 		emit_signal("finished","InAir", {"Jump" : true})
