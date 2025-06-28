@@ -6,10 +6,13 @@ func enter(previous_state_path : String, data := {}):
 func physics_update(_delta:float):
 	if !player.is_on_floor():
 		emit_signal("finished","InAir")
+
+	if Input.is_action_just_pressed("ui_accept") and player.is_on_floor():
+		emit_signal("finished","InAir", {"Jump" : true})
+
 	if player.movInput.x == 0:
 		emit_signal("finished","Idle")
-		if Input.is_action_just_pressed("ui_accept") and player.is_on_floor():
-			emit_signal("finished","InAir", {"Jump" : true})
+
 	player.velocity.x = lerpf(player.velocity.x, player.movInput.x * player.speed , .9)
 	player.move_and_slide()
 

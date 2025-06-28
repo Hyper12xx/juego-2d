@@ -36,11 +36,13 @@ func update(_delta:float):
 		player.animated_sprite_2d.flip_h = player.movInput.x < 0
 
 func handle_input(_event : InputEvent):
-	if Input.is_action_just_pressed("ui_accept") and canReadJumpCoyote and !player.is_on_floor() and player.velocity.y >0:
-		emit_signal("finished","InAir", {"Jump" : true})
-	
-	if Input.is_action_just_pressed("ui_accept") and !player.is_on_floor() and player.velocity.y > 0:
-		$JumppBufferTImer.start()
+	if Input.is_action_just_pressed("ui_accept"):
+		if player.is_on_floor():
+			emit_signal("finished", "InAir", {"Jump": true})
+		elif canReadJumpCoyote and player.velocity.y > 0:
+			emit_signal("finished", "InAir", {"Jump": true})
+		else:
+			$JumppBufferTImer.start()
 
 func exit():
 	pass
