@@ -257,6 +257,7 @@ offset_bottom = -22.0
 text = "state"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -70)
 
 [connection signal="timeout" from="StateMachine/InAir/CoyoteTimer" to="StateMachine/InAir" method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="StateMachine/InAir/JumppBufferTImer" to="StateMachine/InAir" method="_on_jumpp_buffer_t_imer_timeout"]
